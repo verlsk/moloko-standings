@@ -4,8 +4,8 @@ import { RoundsList } from "../entities/RoundsList";
 export const MatchesReader = async (teamsWrapper) => {
     try {
         var matches = [];
-
-        RoundsList.forEach(fileName => {
+        for (var i in RoundsList) {
+            let fileName = RoundsList[i];
             let name = "https://verlsk.github.io/moloko-standings/resources/" + fileName;
             const response = await fetch(name);
             const data = (await response.text()).split("\n");
@@ -27,7 +27,7 @@ export const MatchesReader = async (teamsWrapper) => {
                     matches.push(new Match(team1, team2, goals1, goals2, round, date));
                 }
             }
-        });
+        }
         
 
         return matches;
