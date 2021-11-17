@@ -5,14 +5,16 @@ import { TeamsReader } from './modules/TeamsReader';
 import { TeamsWrapper } from './entities/TeamsWrapper';
 import { MatchesReader } from './modules/MatchesReader';
 import { MatchesWrapper } from './entities/MatchesWrapper';
+import { StaticsBuilder } from './modules/StaticsBuilder';
 
 const App = () => {
-  let teamsWrapper, matchesWrapper;
+  let teamsWrapper, matchesWrapper, stats;
 
   const loadResources = async () => {
     teamsWrapper = new TeamsWrapper(await TeamsReader());
     matchesWrapper = new MatchesWrapper(await MatchesReader(teamsWrapper));
-    console.log(matchesWrapper); 
+    stats = StaticsBuilder(teamsWrapper, matchesWrapper);
+    console.log(stats); 
   }
   
   useEffect(()=> {
