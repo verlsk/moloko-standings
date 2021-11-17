@@ -1,7 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import { TeamsReader } from './modules/TeamsReader';
+import { TeamsWrapper } from './entities/TeamsWrapper';
+import { MatchesReader } from './modules/MatchesReader';
+import { MatchesWrapper } from './entities/MatchesWrapper';
 
-function App() {
+const App = () => {
+  let teamsWrapper, matchesWrapper;
+
+  const loadResources = async () => {
+    teamsWrapper = new TeamsWrapper(await TeamsReader());
+    matchesWrapper = new MatchesWrapper(await MatchesReader("Jornada1.txt", teamsWrapper));
+    console.log(matchesWrapper); 
+  }
+  
+  useEffect(()=> {
+    loadResources();  
+  });
+
   return (
     <div className="App">
       <header className="App-header">
