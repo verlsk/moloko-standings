@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/moloko-standings/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/moloko-standings/static/js/main.a78bf3a2.chunk.js",
-    "main.js.map": "/moloko-standings/static/js/main.a78bf3a2.chunk.js.map",
+    "main.js": "/moloko-standings/static/js/main.95ca774d.chunk.js",
+    "main.js.map": "/moloko-standings/static/js/main.95ca774d.chunk.js.map",
     "runtime-main.js": "/moloko-standings/static/js/runtime-main.40e63e8f.js",
     "runtime-main.js.map": "/moloko-standings/static/js/runtime-main.40e63e8f.js.map",
     "static/js/2.88d7df25.chunk.js": "/moloko-standings/static/js/2.88d7df25.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.40e63e8f.js",
     "static/js/2.88d7df25.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.a78bf3a2.chunk.js"
+    "static/js/main.95ca774d.chunk.js"
   ]
 }
