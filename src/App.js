@@ -11,7 +11,7 @@ const App = () => {
 
   const loadResources = async () => {
     teamsWrapper = new TeamsWrapper(await TeamsReader());
-    matchesWrapper = new MatchesWrapper(await MatchesReader("Jornada1.txt", teamsWrapper));
+    matchesWrapper = new MatchesWrapper(await MatchesReader(teamsWrapper));
     console.log(matchesWrapper); 
   }
   
