@@ -6,6 +6,8 @@ export class TeamStatics {
         this.ties = 0;
         this.def = 0;
         this.vict = 0;
+        this.goals_diff = 0;
+        this.points = 0;
     }
 
     addResult(goals_fav, goals_against) {
@@ -20,5 +22,7 @@ export class TeamStatics {
         else {
             this.ties++
         }
+        this.goals_diff = this.goals_fav - this.goals_against;
+        this.points = this.vict*3 + this.ties;
     }
 }

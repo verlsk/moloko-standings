@@ -1,43 +1,62 @@
-import logo from './logo.svg';
+import _ from 'lodash'
 import './App.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { TeamsReader } from './modules/TeamsReader';
 import { TeamsWrapper } from './entities/TeamsWrapper';
 import { MatchesReader } from './modules/MatchesReader';
 import { MatchesWrapper } from './entities/MatchesWrapper';
 import { StaticsBuilder } from './modules/StaticsBuilder';
+import TableExampleSortable from './modules/StandingsBuilder';
+
+
+const tableData = [
+  { name: 'John', age: 15, gender: 'Male' },
+  { name: 'Amber', age: 40, gender: 'Female' },
+  { name: 'Leslie', age: 25, gender: 'Other' },
+  { name: 'Ben', age: 70, gender: 'Male' },
+]
+
 
 const App = () => {
-  let teamsWrapper, matchesWrapper, stats;
+  const [stats, setStats] = useState([]);
+  let teamsWrapper, matchesWrapper;
 
   const loadResources = async () => {
-    teamsWrapper = new TeamsWrapper(await TeamsReader());
-    matchesWrapper = new MatchesWrapper(await MatchesReader(teamsWrapper));
-    stats = StaticsBuilder(teamsWrapper, matchesWrapper);
-    console.log(stats); 
+    if (stats.length == 0) {
+      teamsWrapper = new TeamsWrapper(await TeamsReader());
+      matchesWrapper = new MatchesWrapper(await MatchesReader(teamsWrapper));
+      let tempStats = StaticsBuilder(teamsWrapper, matchesWrapper);
+      tempStats = _.sortBy(tempStats, ['points']).reverse();
+      setStats(tempStats);      
+    }
+    else {
+      console.log(stats); 
+      console.log(tableData);
+    }
   }
   
   useEffect(()=> {
+    
     loadResources();  
-  });
+  }, [stats]);
 
+  const getView = () => {
+    if (stats.length != 0) {
+      return (
+      <TableExampleSortable tableData={stats}>
+      </TableExampleSortable>
+      )
+    }
+    else {
+      return null;
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+    <div>
+      {getView()}
     </div>
+    
   );
 }
 

@@ -2,6 +2,7 @@ import { TeamStatics } from "../entities/TeamStatics";
 
 export const StaticsBuilder = (teamsWrapper, matchesWrapper) => {
     const mapTeams = new Map();
+    let teamsArray =  [];
     for (var i in teamsWrapper.teams) {
         mapTeams.set(teamsWrapper.teams[i].getName(), new TeamStatics(teamsWrapper.teams[i]))
     }
@@ -20,5 +21,9 @@ export const StaticsBuilder = (teamsWrapper, matchesWrapper) => {
         }
     }
 
-    return mapTeams;
+    mapTeams.forEach(element => {
+        teamsArray.push(element);
+    })
+
+    return teamsArray;
 }
