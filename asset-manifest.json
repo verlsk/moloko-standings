@@ -1,23 +1,26 @@
 {
   "files": {
     "main.css": "/moloko-standings/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/moloko-standings/static/js/main.95ca774d.chunk.js",
-    "main.js.map": "/moloko-standings/static/js/main.95ca774d.chunk.js.map",
-    "runtime-main.js": "/moloko-standings/static/js/runtime-main.40e63e8f.js",
-    "runtime-main.js.map": "/moloko-standings/static/js/runtime-main.40e63e8f.js.map",
-    "static/js/2.88d7df25.chunk.js": "/moloko-standings/static/js/2.88d7df25.chunk.js",
-    "static/js/2.88d7df25.chunk.js.map": "/moloko-standings/static/js/2.88d7df25.chunk.js.map",
-    "static/js/3.262fdbc9.chunk.js": "/moloko-standings/static/js/3.262fdbc9.chunk.js",
-    "static/js/3.262fdbc9.chunk.js.map": "/moloko-standings/static/js/3.262fdbc9.chunk.js.map",
+    "main.js": "/moloko-standings/static/js/main.dba1a99a.chunk.js",
+    "main.js.map": "/moloko-standings/static/js/main.dba1a99a.chunk.js.map",
+    "runtime-main.js": "/moloko-standings/static/js/runtime-main.f6df42b3.js",
+    "runtime-main.js.map": "/moloko-standings/static/js/runtime-main.f6df42b3.js.map",
+    "static/css/2.f483f68b.chunk.css": "/moloko-standings/static/css/2.f483f68b.chunk.css",
+    "static/js/2.eb26ce81.chunk.js": "/moloko-standings/static/js/2.eb26ce81.chunk.js",
+    "static/js/2.eb26ce81.chunk.js.map": "/moloko-standings/static/js/2.eb26ce81.chunk.js.map",
+    "static/js/3.a3bf0b6b.chunk.js": "/moloko-standings/static/js/3.a3bf0b6b.chunk.js",
+    "static/js/3.a3bf0b6b.chunk.js.map": "/moloko-standings/static/js/3.a3bf0b6b.chunk.js.map",
     "index.html": "/moloko-standings/index.html",
+    "static/css/2.f483f68b.chunk.css.map": "/moloko-standings/static/css/2.f483f68b.chunk.css.map",
     "static/css/main.8c8b27cf.chunk.css.map": "/moloko-standings/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.88d7df25.chunk.js.LICENSE.txt": "/moloko-standings/static/js/2.88d7df25.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/moloko-standings/static/media/logo.6ce24c58.svg"
+    "static/js/2.eb26ce81.chunk.js.LICENSE.txt": "/moloko-standings/static/js/2.eb26ce81.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/moloko-standings/static/media/outline-icons.ddae9b1b.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.40e63e8f.js",
-    "static/js/2.88d7df25.chunk.js",
+    "static/js/runtime-main.f6df42b3.js",
+    "static/css/2.f483f68b.chunk.css",
+    "static/js/2.eb26ce81.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.95ca774d.chunk.js"
+    "static/js/main.dba1a99a.chunk.js"
   ]
 }
