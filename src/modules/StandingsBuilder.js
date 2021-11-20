@@ -34,56 +34,64 @@ function TableExampleSortable({tableData}) {
   const { column, data, direction } = state
 
   return (
-    <Table sortable celled fixed>
+    <Table sortable celled fixed unstackable>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell
+            width={5}
             sorted={column === 'team' ? direction : null}
             onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'team' })}
           >
             Equipo
           </Table.HeaderCell>
           <Table.HeaderCell
+            width={2}
             sorted={column === 'vict' ? direction : null}
             onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'vict' })}
           >
             V
           </Table.HeaderCell>
           <Table.HeaderCell
+            width={2}
             sorted={column === 'ties' ? direction : null}
             onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'ties' })}
           >
             E
           </Table.HeaderCell>
           <Table.HeaderCell
-            sorted={column === 'ties' ? direction : null}
+            width={2}
+            sorted={column === 'def' ? direction : null}
             onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'def' })}
           >
             D
           </Table.HeaderCell>
           <Table.HeaderCell
-            sorted={column === 'ties' ? direction : null}
+            width={2}
+            sorted={column === 'goals_fav' ? direction : null}
             onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_fav' })}
           >
             GF
           </Table.HeaderCell>
           <Table.HeaderCell
-            sorted={column === 'ties' ? direction : null}
+            width={2}
+            sorted={column === 'goals_against' ? direction : null}
             onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_against' })}
           >
             GC
           </Table.HeaderCell>
           <Table.HeaderCell
-            sorted={column === 'ties' ? direction : null}
+            width={2}
+            sorted={column === 'goals_diff' ? direction : null}
             onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_diff' })}
           >
             GD
           </Table.HeaderCell>
           <Table.HeaderCell
-            sorted={column === 'ties' ? direction : null}
+            width={2}
+            sorted={column === 'points' ? direction : null}
             onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'points' })}
           >
-            Puntos
+            P
           </Table.HeaderCell>
         </Table.Row>
       </Table.Header>
