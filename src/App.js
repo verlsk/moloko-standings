@@ -6,7 +6,7 @@ import { TeamsWrapper } from './entities/TeamsWrapper';
 import { MatchesReader } from './modules/MatchesReader';
 import { MatchesWrapper } from './entities/MatchesWrapper';
 import { StaticsBuilder } from './modules/StaticsBuilder';
-import TableExampleSortable from './modules/StandingsBuilder';
+import Standings from './modules/StandingsBuilder';
 
 
 const tableData = [
@@ -43,8 +43,8 @@ const App = () => {
   const getView = () => {
     if (stats.length != 0) {
       return (
-      <TableExampleSortable tableData={stats}>
-      </TableExampleSortable>
+      <Standings tableData={stats}>
+      </Standings>
       )
     }
     else {
