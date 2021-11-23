@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { useEffect, useState } from 'react'
-import { Table } from 'semantic-ui-react'
+import { Table, Header } from 'semantic-ui-react'
 
 
 function sortReducer(state, action) {
@@ -41,95 +41,98 @@ function Standings({tableData}) {
   const { column, data, direction } = state;
 
   return (
-    <Table sortable celled fixed unstackable striped inverted size='small'>
-      <Table.Header>
-        <Table.Row>          
-          <Table.HeaderCell
-            width={5}
-            sorted={column === 'team' ? direction : null}
-            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'team' })}
-          >
-            Equipo
-          </Table.HeaderCell>
-          <Table.HeaderCell
-            width={2}
-            sorted={column === 'games' ? direction : null}
-            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'games' })}
-          >
-            J
-          </Table.HeaderCell>
-          <Table.HeaderCell
-            width={2}
-            sorted={column === 'points' ? direction : null}
-            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'points' })}
-          >
-            P
-          </Table.HeaderCell>
-          <Table.HeaderCell
-            width={2}
-            sorted={column === 'vict' ? direction : null}
-            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'vict' })}
-          >
-            V
-          </Table.HeaderCell>
-          <Table.HeaderCell
-            width={2}
-            sorted={column === 'ties' ? direction : null}
-            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'ties' })}
-          >
-            E
-          </Table.HeaderCell>
-          <Table.HeaderCell
-            width={2}
-            sorted={column === 'def' ? direction : null}
-            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'def' })}
-          >
-            D
-          </Table.HeaderCell>
-          <Table.HeaderCell
-            width={2}
-            style={{textOverflow: "unset"}}
-            sorted={column === 'goals_fav' ? direction : null}
-            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_fav' })}
-          >
-            GF
-          </Table.HeaderCell>
-          <Table.HeaderCell
-            width={2}
-            style={{textOverflow: "unset"}}
-            sorted={column === 'goals_against' ? direction : null}
-            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_against' })}
-          >
-            GC
-          </Table.HeaderCell>
-          <Table.HeaderCell
-            width={2}
-            style={{textOverflow: "unset"}}
-            sorted={column === 'goals_diff' ? direction : null}
-            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_diff' })}
-          >
-            GD
-          </Table.HeaderCell>          
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {data.map(({ team, vict, ties, def, goals_fav, goals_against, goals_diff, points, games }) => (
-          <Table.Row key={team.name}>
-            <Table.Cell style={{textOverflow: "unset", fontWeight: team.name === selectedTeam ? "bold":"unset"}}>
-            {team.name}
-            </Table.Cell>        
-            <Table.Cell style={{textOverflow: "unset"}}>{games}</Table.Cell>
-            <Table.Cell style={{textOverflow: "unset"}}>{points}</Table.Cell>
-            <Table.Cell style={{textOverflow: "unset"}}>{vict}</Table.Cell>
-            <Table.Cell style={{textOverflow: "unset"}}>{ties}</Table.Cell>
-            <Table.Cell style={{textOverflow: "unset"}}>{def}</Table.Cell>
-            <Table.Cell style={{textOverflow: "unset"}}>{goals_fav}</Table.Cell>
-            <Table.Cell style={{textOverflow: "unset"}}>{goals_against}</Table.Cell>
-            <Table.Cell style={{textOverflow: "unset"}}>{goals_diff}</Table.Cell>            
+    <div>
+      <Header style={{marginLeft: "5%", marginTop: "2rem"}}>Clasificación</Header>    
+      <Table sortable celled fixed unstackable striped inverted size='small'>
+        <Table.Header>
+          <Table.Row>          
+            <Table.HeaderCell
+              width={5}
+              sorted={column === 'team' ? direction : null}
+              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'team' })}
+            >
+              Equipo
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              width={2}
+              sorted={column === 'games' ? direction : null}
+              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'games' })}
+            >
+              J
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              width={2}
+              sorted={column === 'points' ? direction : null}
+              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'points' })}
+            >
+              P
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              width={2}
+              sorted={column === 'vict' ? direction : null}
+              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'vict' })}
+            >
+              V
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              width={2}
+              sorted={column === 'ties' ? direction : null}
+              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'ties' })}
+            >
+              E
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              width={2}
+              sorted={column === 'def' ? direction : null}
+              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'def' })}
+            >
+              D
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              width={2}
+              style={{textOverflow: "unset"}}
+              sorted={column === 'goals_fav' ? direction : null}
+              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_fav' })}
+            >
+              GF
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              width={2}
+              style={{textOverflow: "unset"}}
+              sorted={column === 'goals_against' ? direction : null}
+              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_against' })}
+            >
+              GC
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              width={2}
+              style={{textOverflow: "unset"}}
+              sorted={column === 'goals_diff' ? direction : null}
+              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_diff' })}
+            >
+              GD
+            </Table.HeaderCell>          
           </Table.Row>
-        ))}
-      </Table.Body>
-    </Table>
+        </Table.Header>
+        <Table.Body>
+          {data.map(({ team, vict, ties, def, goals_fav, goals_against, goals_diff, points, games }) => (
+            <Table.Row key={team.name}>
+              <Table.Cell style={{textOverflow: "unset", fontWeight: team.name === selectedTeam ? "bold":"unset"}}>
+              {team.name}
+              </Table.Cell>        
+              <Table.Cell style={{textOverflow: "unset"}}>{games}</Table.Cell>
+              <Table.Cell style={{textOverflow: "unset"}}>{points}</Table.Cell>
+              <Table.Cell style={{textOverflow: "unset"}}>{vict}</Table.Cell>
+              <Table.Cell style={{textOverflow: "unset"}}>{ties}</Table.Cell>
+              <Table.Cell style={{textOverflow: "unset"}}>{def}</Table.Cell>
+              <Table.Cell style={{textOverflow: "unset"}}>{goals_fav}</Table.Cell>
+              <Table.Cell style={{textOverflow: "unset"}}>{goals_against}</Table.Cell>
+              <Table.Cell style={{textOverflow: "unset"}}>{goals_diff}</Table.Cell>            
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </div>
   )
 }
 

@@ -147,7 +147,7 @@ function Results({matchesWrapper, teamsWrapper}) {
 
   return (
     <div>
-        <Header style={{marginLeft: "5%"}}>Resultados</Header>
+        <Header style={{marginLeft: "5%", marginTop: "2rem"}}>Resultados</Header>
         {getResultsView()}
     </div>
   )
