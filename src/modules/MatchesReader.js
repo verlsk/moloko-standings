@@ -14,7 +14,7 @@ export const MatchesReader = async (teamsWrapper) => {
             var date = 0;
             for (let t in data) {
                 var line = data[t];
-                if (t === "0") {
+                if (t === "0") {                    
                     round = parseInt(line.split(" ")[1]);
                     date = line.split(" ")[2].split("(")[1].split(")")[0];
                 }
@@ -27,10 +27,9 @@ export const MatchesReader = async (teamsWrapper) => {
                     matches.push(new Match(team1, team2, goals1, goals2, round, date));
                 }
             }
-        }
-        
+        }       
 
-        return matches;
+        return [matches, round];
 
     } catch (err) {
         console.error(err);

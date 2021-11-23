@@ -1,6 +1,7 @@
 export class MatchesWrapper {
-    constructor(matches) {
+    constructor(matches, numberOfRounds) {
         this.matches = matches;
+        this.numberOfRounds = numberOfRounds;
     }
 
     addMatch(match) {

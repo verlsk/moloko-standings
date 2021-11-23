@@ -7,6 +7,7 @@ import { MatchesReader } from './modules/MatchesReader';
 import { MatchesWrapper } from './entities/MatchesWrapper';
 import { StaticsBuilder } from './modules/StaticsBuilder';
 import Standings from './modules/StandingsBuilder';
+import Results from './modules/ResultsView';
 
 
 const tableData = [
@@ -19,14 +20,24 @@ const tableData = [
 
 const App = () => {
   const [stats, setStats] = useState([]);
-  let teamsWrapper, matchesWrapper;
+  const [numberOfRounds, setNumberOfRounds] = useState(0);
+  const [matchesWrapper, setMatchesWrapper] = useState(null);
+  let teamsWrapper;
 
   const loadResources = async () => {
     if (stats.length == 0) {
       teamsWrapper = new TeamsWrapper(await TeamsReader());
-      matchesWrapper = new MatchesWrapper(await MatchesReader(teamsWrapper));
-      let tempStats = StaticsBuilder(teamsWrapper, matchesWrapper);
+
+      let matchesReaderRes = await MatchesReader(teamsWrapper);
+      let numberOfRoundsTmp = matchesReaderRes[1]
+      setNumberOfRounds(numberOfRoundsTmp);
+      let tmpMatchesReader = new MatchesWrapper(matchesReaderRes[0], numberOfRoundsTmp);
+
+      let tempStats = StaticsBuilder(teamsWrapper, tmpMatchesReader);
+      
       tempStats = _.sortBy(tempStats, ['points']).reverse();
+
+      setMatchesWrapper(tmpMatchesReader);
       setStats(tempStats);      
     }
     else {
@@ -38,14 +49,18 @@ const App = () => {
   useEffect(()=> {
     
     loadResources();  
-  }, [stats]);
+  }, [stats, matchesWrapper]);
 
   const getView = () => {
-    if (stats.length != 0) {
+    if (stats.length != 0 && matchesWrapper != null && numberOfRounds != 0) {
       return (
-      <Standings tableData={stats}>
-      </Standings>
-      )
+        <div>
+          <Standings tableData={stats}>
+          </Standings>
+          <Results matchesWrapper={matchesWrapper} numberOfRounds={numberOfRounds}>
+          </Results>
+        </div>
+        )
     }
     else {
       return null;

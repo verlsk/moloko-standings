@@ -6,10 +6,15 @@ export class Match {
         this.goals2 = goals2;
         this.round = round;
         this.date = date;
-    }
-
-    getResult() {
-        return this.team1.getName() + " " + this.goals1 + " - " + this.goals2 + " " + this.team2.getName();
+        if (this.goals1 > this.goals2) {
+            this.winner = this.team1;
+        }
+        else if (this.goals2 > this.goals1) {
+            this.winner = this.team2;
+        }
+        else {
+            this.winner = undefined;
+        }
     }
 
     getRound() {

@@ -33,6 +33,7 @@ function Standings({tableData}) {
   })
 
   const [selectedTeam, setSelectedTeam] = useState("MOLOKO 2.0");
+  
   useEffect(() => {
 
   }, [selectedTeam])
@@ -40,7 +41,7 @@ function Standings({tableData}) {
   const { column, data, direction } = state;
 
   return (
-    <Table sortable celled fixed unstackable>
+    <Table sortable celled fixed unstackable striped inverted size='small'>
       <Table.Header>
         <Table.Row>          
           <Table.HeaderCell
@@ -49,6 +50,13 @@ function Standings({tableData}) {
             onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'team' })}
           >
             Equipo
+          </Table.HeaderCell>
+          <Table.HeaderCell
+            width={2}
+            sorted={column === 'games' ? direction : null}
+            onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'games' })}
+          >
+            J
           </Table.HeaderCell>
           <Table.HeaderCell
             width={2}
@@ -105,11 +113,12 @@ function Standings({tableData}) {
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {data.map(({ team, vict, ties, def, goals_fav, goals_against, goals_diff, points }) => (
+        {data.map(({ team, vict, ties, def, goals_fav, goals_against, goals_diff, points, games }) => (
           <Table.Row key={team.name}>
-            <Table.Cell style={{fontWeight: team.name == selectedTeam ? "bold":"unset"}}>
+            <Table.Cell style={{textOverflow: "unset", fontWeight: team.name === selectedTeam ? "bold":"unset"}}>
             {team.name}
             </Table.Cell>        
+            <Table.Cell style={{textOverflow: "unset"}}>{games}</Table.Cell>
             <Table.Cell style={{textOverflow: "unset"}}>{points}</Table.Cell>
             <Table.Cell style={{textOverflow: "unset"}}>{vict}</Table.Cell>
             <Table.Cell style={{textOverflow: "unset"}}>{ties}</Table.Cell>
