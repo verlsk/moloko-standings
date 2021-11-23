@@ -10,14 +10,6 @@ import Standings from './modules/StandingsBuilder';
 import Results from './modules/ResultsView';
 
 
-const tableData = [
-  { name: 'John', age: 15, gender: 'Male' },
-  { name: 'Amber', age: 40, gender: 'Female' },
-  { name: 'Leslie', age: 25, gender: 'Other' },
-  { name: 'Ben', age: 70, gender: 'Male' },
-]
-
-
 const App = () => {
   const [stats, setStats] = useState([]);
   const [numberOfRounds, setNumberOfRounds] = useState(0);
