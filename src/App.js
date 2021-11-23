@@ -22,34 +22,30 @@ const App = () => {
   const [stats, setStats] = useState([]);
   const [numberOfRounds, setNumberOfRounds] = useState(0);
   const [matchesWrapper, setMatchesWrapper] = useState(null);
-  let teamsWrapper;
+  const [teamsWrapper, setTeamsWrapper] = useState(null);
 
   const loadResources = async () => {
     if (stats.length == 0) {
-      teamsWrapper = new TeamsWrapper(await TeamsReader());
+      if (teamsWrapper == null)
+        setTeamsWrapper(new TeamsWrapper(await TeamsReader()));
+      else {
+        let matchesReaderRes = await MatchesReader(teamsWrapper);
+        let numberOfRoundsTmp = matchesReaderRes[1]
+        setNumberOfRounds(numberOfRoundsTmp);
+        let tmpMatchesReader = new MatchesWrapper(matchesReaderRes[0], numberOfRoundsTmp);
+        let tempStats = StaticsBuilder(teamsWrapper, tmpMatchesReader);
+        tempStats = _.sortBy(tempStats, ['points']).reverse();
 
-      let matchesReaderRes = await MatchesReader(teamsWrapper);
-      let numberOfRoundsTmp = matchesReaderRes[1]
-      setNumberOfRounds(numberOfRoundsTmp);
-      let tmpMatchesReader = new MatchesWrapper(matchesReaderRes[0], numberOfRoundsTmp);
-
-      let tempStats = StaticsBuilder(teamsWrapper, tmpMatchesReader);
-      
-      tempStats = _.sortBy(tempStats, ['points']).reverse();
-
-      setMatchesWrapper(tmpMatchesReader);
-      setStats(tempStats);      
-    }
-    else {
-      console.log(stats); 
-      console.log(tableData);
+        setMatchesWrapper(tmpMatchesReader);
+        setStats(tempStats);      
+      }      
     }
   }
   
   useEffect(()=> {
     
     loadResources();  
-  }, [stats, matchesWrapper]);
+  }, [stats, matchesWrapper, teamsWrapper]);
 
   const getView = () => {
     if (stats.length != 0 && matchesWrapper != null && numberOfRounds != 0) {
@@ -57,7 +53,7 @@ const App = () => {
         <div>
           <Standings tableData={stats}>
           </Standings>
-          <Results matchesWrapper={matchesWrapper} numberOfRounds={numberOfRounds}>
+          <Results matchesWrapper={matchesWrapper} numberOfRounds={numberOfRounds} teamsWrapper={teamsWrapper}>
           </Results>
         </div>
         )
