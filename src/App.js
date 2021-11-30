@@ -26,7 +26,19 @@ const App = () => {
         setNumberOfRounds(numberOfRoundsTmp);
         let tmpMatchesReader = new MatchesWrapper(matchesReaderRes[0], numberOfRoundsTmp);
         let tempStats = StaticsBuilder(teamsWrapper, tmpMatchesReader);
-        tempStats = _.sortBy(tempStats, ['points']).reverse();
+        tempStats = _.sortBy(tempStats, ['points']).sort((a, b) => {
+          if (a.points - b.points != 0) {
+            return a.points - b.points;
+          }
+          let goalsAgainst = tmpMatchesReader.getGoalsAgainst(a, b);
+          let goalDiff = goalsAgainst[0] - goalsAgainst[1];
+          if (goalDiff != 0) {
+            return goalDiff;
+          }
+          else {
+            return a.goals_diff - b.goals_diff;
+          }
+        }).reverse();
 
         setMatchesWrapper(tmpMatchesReader);
         setStats(tempStats);      

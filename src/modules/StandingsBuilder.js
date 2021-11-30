@@ -3,33 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { Table, Header } from 'semantic-ui-react'
 
 
-function sortReducer(state, action) {
-  switch (action.type) {
-    case 'CHANGE_SORT':
-      if (state.column === action.column) {
-        return {
-          ...state,
-          data: state.data.slice().reverse(),
-          direction:
-            state.direction === 'descending' ? 'ascending' : 'descending',
-        }
-      }
-
-      return {
-        column: action.column,
-        data: _.sortBy(state.data, [action.column]).reverse(),
-        direction: 'descending'
-      }
-    default:
-      throw new Error()
-  }
-}
-
-function Standings({tableData}) {
-  const [state, dispatch] = React.useReducer(sortReducer, {
-    column: "points",
-    data: tableData,
-    direction: "descending"    
+function Standings({tableData }) {
+  const [state, dispatch] = React.useState({
+    data: tableData   
   })
 
   const [selectedTeam, setSelectedTeam] = useState("MOLOKO 2.0");
@@ -43,48 +19,42 @@ function Standings({tableData}) {
   return (
     <div>
       <Header style={{marginLeft: "5%", marginTop: "2rem"}}>Clasificación</Header>    
-      <Table sortable celled fixed unstackable striped inverted size='small'>
+      <Table celled fixed unstackable striped inverted size='small'>
         <Table.Header>
           <Table.Row>          
             <Table.HeaderCell
               width={5}
               sorted={column === 'team' ? direction : null}
-              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'team' })}
             >
               Equipo
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
               sorted={column === 'games' ? direction : null}
-              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'games' })}
             >
               J
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
               sorted={column === 'points' ? direction : null}
-              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'points' })}
             >
               P
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
               sorted={column === 'vict' ? direction : null}
-              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'vict' })}
             >
               V
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
               sorted={column === 'ties' ? direction : null}
-              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'ties' })}
             >
               E
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
               sorted={column === 'def' ? direction : null}
-              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'def' })}
             >
               D
             </Table.HeaderCell>
@@ -92,7 +62,6 @@ function Standings({tableData}) {
               width={2}
               style={{textOverflow: "unset"}}
               sorted={column === 'goals_fav' ? direction : null}
-              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_fav' })}
             >
               GF
             </Table.HeaderCell>
@@ -100,7 +69,6 @@ function Standings({tableData}) {
               width={2}
               style={{textOverflow: "unset"}}
               sorted={column === 'goals_against' ? direction : null}
-              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_against' })}
             >
               GC
             </Table.HeaderCell>
@@ -108,7 +76,6 @@ function Standings({tableData}) {
               width={2}
               style={{textOverflow: "unset"}}
               sorted={column === 'goals_diff' ? direction : null}
-              onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'goals_diff' })}
             >
               GD
             </Table.HeaderCell>          
