@@ -116,7 +116,7 @@ function Results({matchesWrapper, teamsWrapper}) {
     {   
       menuItem: (
         <Menu.Item key="round" style={{ width: "50%" }}>
-          Por rondas
+          Por jornadas
         </Menu.Item>
       ),
       render: () => 
