@@ -29,7 +29,7 @@ function Results({matchesWrapper, teamsWrapper}) {
       }));
       setDropdownTeams(tmpDropdown);
     }
-  }, [selectedTeam, dropdownTeams])
+  }, [selectedTeam, dropdownTeams, teamsWrapper.teams])
 
   const handleChange = (e, data) => {
     setSelectedTeam(data.value)
@@ -101,11 +101,11 @@ function Results({matchesWrapper, teamsWrapper}) {
 }
 
   const getResultsDisplay = (filter) => {
-    if (filter == matchesFilter.BY_ROUND) {
+    if (filter === matchesFilter.BY_ROUND) {
       return (<div>       
           {getGrid()}</div>)
     }
-    else if (filter == matchesFilter.BY_TEAM) {
+    else if (filter === matchesFilter.BY_TEAM) {
       return (<div>
         {getByTeamGrid()}
       </div>)

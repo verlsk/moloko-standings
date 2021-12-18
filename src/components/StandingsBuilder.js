@@ -1,20 +1,15 @@
-import _ from 'lodash'
 import React, { useEffect, useState } from 'react'
 import { Table, Header } from 'semantic-ui-react'
 
 
 function Standings({tableData }) {
-  const [state, dispatch] = React.useState({
-    data: tableData   
-  })
-
   const [selectedTeam, setSelectedTeam] = useState("MOLOKO 2.0");
   
   useEffect(() => {
-
+    setSelectedTeam("MOLOKO 2.0");
   }, [selectedTeam])
 
-  const { column, data, direction } = state;
+  const data = tableData;
 
   return (
     <div>
@@ -24,58 +19,49 @@ function Standings({tableData }) {
           <Table.Row>          
             <Table.HeaderCell
               width={5}
-              sorted={column === 'team' ? direction : null}
             >
               Equipo
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
-              sorted={column === 'games' ? direction : null}
             >
               J
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
-              sorted={column === 'points' ? direction : null}
             >
               P
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
-              sorted={column === 'vict' ? direction : null}
             >
               V
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
-              sorted={column === 'ties' ? direction : null}
             >
               E
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
-              sorted={column === 'def' ? direction : null}
             >
               D
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
               style={{textOverflow: "unset"}}
-              sorted={column === 'goals_fav' ? direction : null}
             >
               GF
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
               style={{textOverflow: "unset"}}
-              sorted={column === 'goals_against' ? direction : null}
             >
               GC
             </Table.HeaderCell>
             <Table.HeaderCell
               width={2}
               style={{textOverflow: "unset"}}
-              sorted={column === 'goals_diff' ? direction : null}
             >
               GD
             </Table.HeaderCell>          
