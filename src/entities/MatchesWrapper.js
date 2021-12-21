@@ -9,13 +9,13 @@ export class MatchesWrapper {
     }
 
     getGoalsAgainst(team1, team2) {
-        let matches_together = this.matches.filter(match => (match.team1.getName() === team1 && match.team2.getName() === team2) ||
-                                                            (match.team2.getName() === team1 && match.team1.getName() === team2));
+        let matches_together = this.matches.filter(match => (match.team1.getName() === team1.team.getName() && match.team2.getName() === team2.team.getName()) ||
+                                                            (match.team2.getName() === team1.team.getName() && match.team1.getName() === team2.team.getName()));
 
         let team1Goals = 0, team2Goals = 0;
 
         for (let m of matches_together) {
-            if (m.team1.getName() === team1) {
+            if (m.team1.getName() === team1.team.getName()) {
                 team1Goals += m.goals1;
                 team2Goals += m.goals2;
             }
