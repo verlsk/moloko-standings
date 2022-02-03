@@ -8,5 +8,6 @@ export const RoundsList = [
     "Jornada7.txt",
     "Jornada8.txt",
     "Jornada9.txt",
-    "Jornada10.txt"
+    "Jornada10.txt",
+    "Jornada11.txt"
 ]
