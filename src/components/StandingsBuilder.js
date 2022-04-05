@@ -14,7 +14,7 @@ function Standings({tableData }) {
   const getImage = (teamName) => {
     if (teamName === "MOLOKO 2.0") {
       return (
-        <img style={{width: "auto", height: "10vw", marginLeft: "1rem"}} src="https://verlsk.github.io/moloko-standings/resources/giphy.gif"/>
+        <img style={{width: "auto", height: "5vw", marginLeft: "1rem"}} src="https://verlsk.github.io/moloko-standings/resources/giphy.gif"/>
       )
     }
   }
