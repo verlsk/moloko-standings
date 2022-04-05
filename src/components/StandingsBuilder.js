@@ -11,6 +11,14 @@ function Standings({tableData }) {
 
   const data = tableData;
 
+  const getImage = (teamName) => {
+    if (teamName === "MOLOKO 2.0") {
+      return (
+        <img style={{width: "auto", height: "10vw", marginLeft: "1rem"}} src="https://verlsk.github.io/moloko-standings/resources/giphy.gif"/>
+      )
+    }
+  }
+
   return (
     <div>
       <Header style={{marginLeft: "5%", marginTop: "2rem"}}>Clasificación</Header>    
@@ -70,8 +78,9 @@ function Standings({tableData }) {
         <Table.Body>
           {data.map(({ team, vict, ties, def, goals_fav, goals_against, goals_diff, points, games }) => (
             <Table.Row key={team.name}>
-              <Table.Cell style={{textOverflow: "unset", fontWeight: team.name === selectedTeam ? "bold":"unset"}}>
+              <Table.Cell style={{textOverflow: "unset", fontWeight: team.name === selectedTeam ? "bold":"unset", alignItems: "center", display: "flex"}}>
               {team.name}
+              {getImage(team.name)}              
               </Table.Cell>        
               <Table.Cell style={{textOverflow: "unset"}}>{games}</Table.Cell>
               <Table.Cell style={{textOverflow: "unset"}}>{points}</Table.Cell>
